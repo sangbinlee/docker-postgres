@@ -3,7 +3,7 @@ docker-postgresql
 
 
 
- 
+# sudo chmod +x /usr/local/bin/docker-compose
 # sudo usermod -aG docker $USER
                 
         현재 계정을 docker 2차그룹에 추가 ?
@@ -114,6 +114,18 @@ docker-postgresql
         sangbinlee9@master:~$
 
 
+#
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -156,10 +168,62 @@ docker-postgresql
         depends_on:
           - postgres
 
+# ----------------------------------------------------------------------
+
+# ----------------------------------------------------------------------
+
+# ----------------------------------------------------------------------
+
+# ----------------------------------------------------------------------
+
+# 추천 
+     version: '3.6'
+      
+     services:
+       postgres:
+         container_name: postgres
+         image: postgres:14
+         restart: unless-stopped
+         environment:
+           - POSTGRES_USER=postgres
+           - POSTGRES_PASSWORD=postgres
+           - TZ=Asia/Seoul
+         volumes:
+           - ./data:/var/lib/postgresql/data
+         ports:
+           - "5432:5432"
+      
+       pgadmin:
+         container_name: pgadmin
+         image: dpage/pgadmin4
+         restart: unless-stopped
+         ports:
+           - "5555:80"
+         volumes:
+           - ./pgadmin:/var/lib/pgadmin
+         environment:
+           - PGADMIN_DEFAULT_EMAIL=example@pgadmin.com
+           - PGADMIN_DEFAULT_PASSWORD=pgadmin
+           - TZ=Asia/Seoul
+         depends_on:
+           - postgres
 
 
+     
+# 추천 
+     mkdir data pgadmin
+      
+     chmod 777 data pgadmin
+      
+     docker-compose up -d
 
+# ----------------------------------------------------------------------
 
+# ----------------------------------------------------------------------
+
+# ----------------------------------------------------------------------
+
+# ----------------------------------------------------------------------
 #
 
         
