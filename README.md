@@ -311,8 +311,10 @@ docker-postgresql
             - ./data/postgres/:/var/lib/postgresql/data
       ~
 
-
-
+# 
+    CREATE USER  [user] PASSWORD '비밀번호' SUPERUSER;
+    CREATE DATABASE [db] OWNER  [user];
+    
 # database 생성
 
     create database [db];
