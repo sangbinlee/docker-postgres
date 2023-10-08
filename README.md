@@ -260,3 +260,53 @@ docker-postgresql
               - TZ=Asia/Seoul
             depends_on:
               - postgres
+
+
+
+#
+
+
+      
+      root@master:~/postgresql# vi docker-compose.yml
+      #docker compose up -d
+      #docker compose down
+      #
+      # docker ps
+      # docker logs -f id or name
+      #
+      #docker start postgres
+      #docker stop postgres
+      #docker restart postgres
+      #
+      #docker rm id or name
+      #docker rmi id or name
+      #
+      #docker exec -it id or name /bin/bash
+      
+      
+      
+      
+      
+      # compose 파일 버전
+      version: "3"
+      services:
+        # 서비스 명
+        postgresql:
+          # 사용할 이미지
+          image: postgres
+          # 컨테이너 실행 시 재시작
+          restart: always
+          # 컨테이너명 설정
+          container_name: postgres
+          # 접근 포트 설정 (컨테이너 외부:컨테이너 내부)
+          ports:
+            - "5432:5432"
+          # 환경 변수 설정
+          environment:
+            # PostgreSQL 계정 및 패스워드 설정 옵션
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: password
+          # 볼륨 설정
+          volumes:
+            - ./data/postgres/:/var/lib/postgresql/data
+      ~
