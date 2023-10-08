@@ -182,7 +182,7 @@ docker-postgresql
      services:
        postgres:
          container_name: postgres
-         image: postgres:14
+         image: postgres:latest
          restart: unless-stopped
          environment:
            - POSTGRES_USER=postgres
@@ -311,7 +311,7 @@ docker-postgresql
             - ./data/postgres/:/var/lib/postgresql/data
       ~
 
-# 
+# user, database 생성 by superuser
     CREATE USER  [user] PASSWORD '비밀번호' SUPERUSER;
     CREATE DATABASE [db] OWNER  [user];
     
