@@ -310,3 +310,61 @@ docker-postgresql
           volumes:
             - ./data/postgres/:/var/lib/postgresql/data
       ~
+
+
+
+# database 생성
+
+    create database [db];
+ 
+# user 생성
+
+    create user [user] with encrypted password '1234';
+ 
+
+# 권한 부여
+
+    grant all privileges on database [db] to [user];
+
+    
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+
+
+# POSTGRES_DB: appdb
+
+
+
+
+    
+    version: '3'
+    services:
+      db:
+        image: postgres:13-alpine
+        environment:
+          POSTGRES_USER: app
+          POSTGRES_PASSWORD: app1234
+          POSTGRES_DB: appdb
+        ports:
+          - "5432:5432"
+        volumes:
+          - pgdata:/var/lib/postgresql/data
+    volumes:
+      pgdata:
